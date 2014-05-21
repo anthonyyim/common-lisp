@@ -1,6 +1,9 @@
-* `matcher.lisp` 
+`matcher.lisp`
 
-* `eight_puzzle_solver.lisp`
+------
+
+`eight_puzzle_solver.lisp`
+
 An [eight puzzle solver](http://en.wikipedia.org/wiki/15_puzzle).
 
 Usage: `(solve 'misplaced-tiles)` or `(solve 'manhattan-dist)`
