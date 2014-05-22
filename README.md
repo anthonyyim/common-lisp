@@ -28,6 +28,7 @@ Example output:
 >(solve 'manhattan-dist '(2 3 6 1 7 8 5 4 0))
 is the initial state. Nodes expanded is 85. Below is the sequence of moves by blank tile:
 >(UP UP LEFT LEFT DOWN RIGHT DOWN LEFT UP RIGHT DOWN RIGHT)
+```
 
 -----
 **kb.lisp**
