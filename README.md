@@ -1,7 +1,3 @@
-**matcher.lisp**
-
-------
-
 **eight_puzzle_solver.lisp**
 
 An [eight puzzle solver](http://en.wikipedia.org/wiki/15_puzzle).
@@ -32,3 +28,54 @@ Example output:
 >(solve 'manhattan-dist '(2 3 6 1 7 8 5 4 0))
 is the initial state. Nodes expanded is 85. Below is the sequence of moves by blank tile:
 >(UP UP LEFT LEFT DOWN RIGHT DOWN LEFT UP RIGHT DOWN RIGHT)
+
+-----
+**kb.lisp**
+
+A first order logic inference engine
+
+Usage: `(atp '(-insert knowledge base here-) '(-insert negated query here-))`
+
+`-insert knowledge base here-` and `-insert query here-` should be your knowledge
+base and negated query respectively in first order logic. A successful resolution
+returns `NEGATED_QUERY_IS_FALSE` and a failure returns `FAIL`.
+
+Furthermore, the `!` symbol represents "not" and the `$` designates a
+variable (E.g. $x would be the variable x). Skolem functions and
+constants are also supported. For example, a Skolem function in a literal would be
+represented like the following: (American $x (F $y)). I.e., American(x F(x)).
+
+Example Input:
+```lisp
+(atp '(((! American $x) (! Weapon $y) (! Sells $x $y $z) (! Hostile $z) (Criminal $x))
+((Owns Nono M1))
+((Missile M1))
+((! Missile $x) (! Owns Nono $x) (Sells West $x Nono))
+((! Missile $x) (Weapon $x))
+((! Enemy $x America) (Hostile $x))
+((American West))
+((Enemy Nono America)))
+'(((! Criminal West))))
+```
+
+Where the knowledge base is:
+```lisp
+'(((! American $x) (! Weapon $y) (! Sells $x $y $z) (! Hostile $z) (Criminal $x))
+((Owns Nono M1))
+((Missile M1))
+((! Missile $x) (! Owns Nono $x) (Sells West $x Nono))
+((! Missile $x) (Weapon $x))
+((! Enemy $x America) (Hostile $x))
+((American West))
+((Enemy Nono America)))
+```
+
+and the negated query is:
+```lisp
+'(((! Criminal West)))
+```
+
+-----
+
+**matcher.lisp**
+
